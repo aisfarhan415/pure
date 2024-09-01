@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::resource('products', ProductController::class);
-
+Route::resource('posts', PostController::class);

@@ -13,9 +13,6 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
-    protected $routeMiddleware = [
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
-    ];
     
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
@@ -43,10 +40,18 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+    ];
+    protected $routeMiddleware = [
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
     ];
 
     /**

@@ -17,6 +17,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    
+     // Example of a method in the User model
+    public function isAdmin()
+    {
+        return $this->is_admin; // Ensure this matches your actual attribute or logic
+    }
+
     protected $fillable = [
         'name',
         'email',
